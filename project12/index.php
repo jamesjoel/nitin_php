@@ -1,6 +1,11 @@
 <?php
 include("common_info/db.php");
 include("common_info/header.php");
+
+$query = "SELECT * FROM jobs";
+$result = mysqli_query($con, $query);
+
+
 ?>
 <div class="clearfix"></div>
 
@@ -49,76 +54,27 @@ include("common_info/header.php");
 	<div class="padding-right">
 		<h3 class="margin-bottom-25">Recent Jobs</h3>
 		<ul class="job-list">
-
+			<?php
+			while($data=mysqli_fetch_assoc($result))
+			{
+			?>
 			<li class="highlighted"><a href="job-page.html">
 				<img src="images/job-list-logo-01.png" alt="">
 				<div class="job-list-content">
-					<h4>Marketing Coordinator - SEO / SEM Experience <span class="full-time">Full-Time</span></h4>
+					<h4><?php echo $data['job_title'] ?> <span class="<?php echo strtolower($data['job_type']); ?>"><?php echo $data['job_type']; ?></span></h4>
 					<div class="job-icons">
-						<span><i class="fa fa-briefcase"></i> King</span>
-						<span><i class="fa fa-map-marker"></i> Sydney</span>
-						<span><i class="fa fa-money"></i> $100 / hour</span>
+						<span><i class="fa fa-briefcase"></i> <?php echo $data['employer_id'] ?></span>
+						<span><i class="fa fa-map-marker"></i> <?php echo $data['job_location'] ?></span>
+						<span><i class="fa fa-money"></i> $<?php echo $data['salary'] ?> / hour</span>
 					</div>
 				</div>
 				</a>
 				<div class="clearfix"></div>
 			</li>
+			<?php
+			}
+			?>
 
-			<li><a href="job-page.php">
-				<img src="images/job-list-logo-02.png" alt="">
-				<div class="job-list-content">
-					<h4>Core PHP Developer for Site Maintenance <span class="part-time">Part-Time</span></h4>
-					<div class="job-icons">
-						<span><i class="fa fa-briefcase"></i> Cubico</span>
-						<span><i class="fa fa-map-marker"></i> London</span>
-						<span><i class="fa fa-money"></i> $50 / hour</span>
-					</div>
-				</div>
-				</a>
-				<div class="clearfix"></div>
-			</li>
-
-			<li><a href="job-page.php">
-				<img src="images/job-list-logo-03.png" alt="">
-				<div class="job-list-content">
-					<h4>Restaurant Team Member - Crew <span class="full-time">Full-Time</span></h4>
-					<div class="job-icons">
-						<span><i class="fa fa-briefcase"></i> King</span>
-						<span><i class="fa fa-map-marker"></i> Sydney</span>
-						<span><i class="fa fa-money"></i> $15 / hour</span>
-					</div>
-				</div>
-				</a>
-				<div class="clearfix"></div>
-			</li>
-
-			<li><a href="job-page.php">
-				<img src="images/job-list-logo-04.png" alt="">
-				<div class="job-list-content">
-					<h4>Power Systems User Experience Designer  <span class="internship">Internship</span></h4>
-					<div class="job-icons">
-						<span><i class="fa fa-briefcase"></i> Hexagon</span>
-						<span><i class="fa fa-map-marker"></i> London</span>
-						<span><i class="fa fa-money"></i> $75 / hour</span>
-					</div>
-				</div>
-				</a>
-				<div class="clearfix"></div>
-			</li>
-
-			<li><a href="job-page.php">
-				<img src="images/job-list-logo-05.png" alt="">
-				<div class="job-list-content">
-					<h4>iPhone / Android Music App Development <span class="temporary">Temporary</span></h4>
-					<div class="job-icons">
-						<span><i class="fa fa-briefcase"></i> Mates</span>
-						<span><i class="fa fa-map-marker"></i> New York</span>
-						<span><i class="fa fa-money"></i> $115 / hour</span>
-					</div>
-				</div>
-				</a>
-				<div class="clearfix"></div>
-			</li>
 		</ul>
 
 		<a href="browse-jobs.php" class="button centered"><i class="fa fa-plus-circle"></i> Show More Jobs</a>
@@ -203,96 +159,6 @@ include("common_info/header.php");
 ================================================== -->
 <div class="margin-top-15"></div>
 
-<div id="footer">
-	<!-- Main -->
-	<div class="container">
-
-		<div class="seven columns">
-			<h4>About</h4>
-			<p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
-			<a href="#" class="button">Get Started</a>
-		</div>
-
-		<div class="three columns">
-			<h4>Company</h4>
-			<ul class="footer-links">
-				<li><a href="#">About Us</a></li>
-				<li><a href="#">Careers</a></li>
-				<li><a href="#">Our Blog</a></li>
-				<li><a href="#">Terms of Service</a></li>
-				<li><a href="#">Privacy Policy</a></li>
-				<li><a href="#">Hiring Hub</a></li>
-			</ul>
-		</div>
-		
-		<div class="three columns">
-			<h4>Press</h4>
-			<ul class="footer-links">
-				<li><a href="#">In the News</a></li>
-				<li><a href="#">Press Releases</a></li>
-				<li><a href="#">Awards</a></li>
-				<li><a href="#">Testimonials</a></li>
-				<li><a href="#">Timeline</a></li>
-			</ul>
-		</div>		
-
-		<div class="three columns">
-			<h4>Browse</h4>
-			<ul class="footer-links">
-				<li><a href="#">Freelancers by Category</a></li>
-				<li><a href="#">Freelancers in USA</a></li>
-				<li><a href="#">Freelancers in UK</a></li>
-				<li><a href="#">Freelancers in Canada</a></li>
-				<li><a href="#">Freelancers in Australia</a></li>
-				<li><a href="#">Find Jobs</a></li>
-
-			</ul>
-		</div>
-
-	</div>
-
-	<!-- Bottom -->
-	<div class="container">
-		<div class="footer-bottom">
-			<div class="sixteen columns">
-				<h4>Follow Us</h4>
-				<ul class="social-icons">
-					<li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
-					<li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
-					<li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
-					<li><a class="linkedin" href="#"><i class="icon-linkedin"></i></a></li>
-				</ul>
-				<div class="copyrights">©  Copyright 2015 by <a href="#">Work Scout</a>. All Rights Reserved.</div>
-			</div>
-		</div>
-	</div>
-
-</div>
-
-<!-- Back To Top Button -->
-<div id="backtotop"><a href="#"></a></div>
-
-</div>
-<!-- Wrapper / End -->
-
-
-<!-- Scripts
-================================================== -->
-<script src="scripts/jquery-2.1.3.min.js"></script>
-<script src="scripts/custom.js"></script>
-<script src="scripts/jquery.superfish.js"></script>
-<script src="scripts/jquery.themepunch.tools.min.js"></script>
-<script src="scripts/jquery.themepunch.revolution.min.js"></script>
-<script src="scripts/jquery.themepunch.showbizpro.min.js"></script>
-<script src="scripts/jquery.flexslider-min.js"></script>
-<script src="scripts/chosen.jquery.min.js"></script>
-<script src="scripts/jquery.magnific-popup.min.js"></script>
-<script src="scripts/waypoints.min.js"></script>
-<script src="scripts/jquery.counterup.min.js"></script>
-<script src="scripts/jquery.jpanelmenu.js"></script>
-<script src="scripts/stacktable.js"></script>
-
-
-
-</body>
-</html>
+<?php
+include("common_info/footer.php");
+?>

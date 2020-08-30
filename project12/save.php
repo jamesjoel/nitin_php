@@ -12,7 +12,7 @@ include("common_info/db.php");
 
 $a = $_POST['full_name'];
 $b = $_POST['email'];
-$c = $_POST['password'];
+$c = sha1($_POST['password']);
 $d = $_POST['address'];
 $e = $_POST['gender'];
 $f = $_POST['city'];

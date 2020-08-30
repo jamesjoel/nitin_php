@@ -35,20 +35,35 @@
 						<li><a href="job-alerts.php">Job Alerts</a></li>
 					</ul>
 				</li>
+				<?php
+				if(isset($_SESSION['is_company_logged_in']))
+				{ ?>
+					<li><a href="#"><?php echo $_SESSION['username'] ?></a>
+						<ul>
+							<li><a href="employer_dashboard.php">Employer Dashboard</a></li>
+							<li><a href="create_jobs.php">Jobs</a></li>
+							<li><a href="all_jobs.php">All Jobs</a></li>
+							<li><a href="logout.php">Employer Logout</a></li>
+						</ul>
+					</li>
+				<?php }else{ ?>
 
-				<li><a href="#">For Employers</a>
-					<ul>
-						<li><a href="login_employer.php">Employer Login</a></li>
-						<li><a href="register_employer.php">Employer Register</a></li>
-					</ul>
-				</li>
+					<li><a href="#">For Employers</a>
+						<ul>
+							<li><a href="login_employer.php">Employer Login</a></li>
+							<li><a href="register_employer.php">Employer Register</a></li>
+						</ul>
+					</li>
+
+				<?php }
+				?>
 
 			</ul>
 
 
 			<ul class="float-right">
 				<?php
-				if(isset($_SESSION['is_logged_in']))
+				if(isset($_SESSION['is_employee_logged_in']))
 				{ ?>
 					<li><a href="profile"><i class="fa fa-user"></i> Profile</a></li>
 					<li><a href="dashboard.php"><i class="fa fa-lock"></i> Dashboard</a></li>
